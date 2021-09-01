@@ -20,7 +20,9 @@ class FiltersHomePage: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+}
 
+extension FiltersHomePage {
     func fetchData() -> [[String: String]]? {
         var model: [[String: String]]?
         guard let path = Bundle.main.path(forResource: "input", ofType: "json") else { return nil }
@@ -50,24 +52,22 @@ class FiltersHomePage: UIViewController {
     }
     
     func pushFiltersVC() {
-        guard let data = fetchData() else { return }
-        // push the customisedFiltersViewController and then unComment the below lines of code.
-//        filtersVC.filtersData = data
-//        filtersVC.currentFilterType = currentFilterSelected
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let customisedFiltersVC = storyboard.instantiateViewController(withIdentifier: "CustomisedFiltersViewController") as? CustomisedFiltersViewController
+        guard let viewController = customisedFiltersVC,
+              let data = fetchData() else { return }
+        viewController.filtersData = data
+        viewController.currentFilterType = currentFilterSelected
+        navigationController?.pushViewController(viewController, animated: true)
     }
-    
     
     @IBAction func openSelfCustomizedFilters(_ sender: Any) {
         currentFilterSelected = .SelfCustomisedFilter
         pushFiltersVC()
     }
     
-    
     @IBAction func openAutoCustomizedFilters(_ sender: Any) {
         currentFilterSelected = .AutoCustomisedFilter
         pushFiltersVC()
     }
-    
-    
-    
 }

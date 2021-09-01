@@ -10,14 +10,8 @@ import UIKit
 class CustomisedFiltersViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
     
-    var datasource: [String] = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]
-    
-    var filtersData: [[String: String]]? {
-        didSet{
-            collectionView.reloadData()
-        }
-    }
-    
+    private var datasource: [String] = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]
+    var filtersData: [[String: String]]?
     var currentFilterType: FilterType?
     
     override func viewDidLoad() {
