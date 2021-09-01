@@ -9,6 +9,8 @@ import UIKit
 
 class CustomisedFiltersViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var saveYourChangesButton: UIButton!
     
     private var datasource = [String]()
     var filtersData: [[String: String]]?
@@ -20,14 +22,19 @@ class CustomisedFiltersViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        saveUserFilerCustomisation()
+        saveAutoCustomisedFilterData()
         super.viewWillDisappear(animated)
+    }
+    
+    @IBAction func didTapSaveYourChanges(_ sender: Any) {
+        saveSelfCustomisedFilterData()
     }
 }
 
 extension CustomisedFiltersViewController {
     func setupInterface() {
         title = currentFilterType?.screenTitle
+        infoLabel.text = currentFilterType?.userInfoText
         collectionView.dataSource = self
         collectionView.delegate = self
         
@@ -35,6 +42,9 @@ extension CustomisedFiltersViewController {
             collectionView.dragDelegate = self
             collectionView.dropDelegate = self
             collectionView.dragInteractionEnabled = true
+            saveYourChangesButton.isHidden = false
+        } else {
+            saveYourChangesButton.isHidden = true
         }
         updateDatasource()
     }
@@ -62,12 +72,15 @@ extension CustomisedFiltersViewController {
         coordinator.drop(item.dragItem, toItemAt: destinationIndexPath)
     }
     
-    func saveUserFilerCustomisation() {
-        (currentFilterType == .selfCustomisedFilter) ? saveSelfCustomisedFilterData()
-            : saveAutoCustomisedFilterData()
-    }
-    
     func saveSelfCustomisedFilterData() {
+        var filterDictToSave = [String: String]()
+        datasource.enumerated().forEach { (index, item) in
+            if let filterItem = filtersData?.first(where: { $0["name"] == item }),
+               let itemId = filterItem["id"] {
+                filterDictToSave[itemId] = "\(index+1)"
+            }
+        }
+        Utilities.setDataInUserDefaults(filterDictToSave, for: FilterType.selfCustomisedFilter.rawValue)
     }
     
     func saveAutoCustomisedFilterData() {
@@ -90,14 +103,15 @@ extension CustomisedFiltersViewController: UICollectionViewDataSource {
 
 extension CustomisedFiltersViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Selected")
+        let item = datasource[indexPath.row]
+        infoLabel.text = "You have selected \(item)"
     }
 }
 
 extension CustomisedFiltersViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 50)
+        return CGSize(width: 80, height: 50)
     }
 }
 

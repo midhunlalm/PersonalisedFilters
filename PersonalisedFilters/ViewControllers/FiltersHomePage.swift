@@ -19,6 +19,15 @@ enum FilterType: String {
             return "Auto Customisable Filter"
         }
     }
+    
+    var userInfoText: String {
+        switch self {
+        case .selfCustomisedFilter:
+            return "Rearrange your filter option and click on save"
+        case .autoCustomisedFilter:
+            return ""
+        }
+    }
 }
 
 class FiltersHomePage: UIViewController {
