@@ -18,6 +18,11 @@ class CustomisedFiltersViewController: UIViewController {
         super.viewDidLoad()
         setupInterface()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        saveUserFilerCustomisation()
+        super.viewWillDisappear(animated)
+    }
 }
 
 extension CustomisedFiltersViewController {
@@ -55,6 +60,17 @@ extension CustomisedFiltersViewController {
             self.collectionView.insertItems(at: [destinationIndexPath])
         }, completion: nil)
         coordinator.drop(item.dragItem, toItemAt: destinationIndexPath)
+    }
+    
+    func saveUserFilerCustomisation() {
+        (currentFilterType == .selfCustomisedFilter) ? saveSelfCustomisedFilterData()
+            : saveAutoCustomisedFilterData()
+    }
+    
+    func saveSelfCustomisedFilterData() {
+    }
+    
+    func saveAutoCustomisedFilterData() {
     }
 }
 
