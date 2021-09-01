@@ -10,8 +10,12 @@ import UIKit
 class CustomisedFiltersViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
     
-    private var datasource: [String] = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]
-    var filtersData: [[String: String]]?
+    private var datasource = [String]()
+    var filtersData: [[String: String]]? {
+        didSet {
+            updateDatasource()
+        }
+    }
     var currentFilterType: FilterType?
     
     override func viewDidLoad() {
@@ -24,9 +28,21 @@ extension CustomisedFiltersViewController {
     func setupInterface() {
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.dragDelegate = self
-        collectionView.dropDelegate = self
-        collectionView.dragInteractionEnabled = true
+        
+        if currentFilterType == .selfCustomisedFilter {
+            collectionView.dragDelegate = self
+            collectionView.dropDelegate = self
+            collectionView.dragInteractionEnabled = true
+        }
+    }
+    
+    func updateDatasource() {
+        datasource.removeAll()
+        filtersData?.forEach({ (item) in
+            if let name = item["name"] {
+                datasource.append(name)
+            }
+        })
     }
     
     func reorderItems(coordinator: UICollectionViewDropCoordinator,
@@ -55,6 +71,12 @@ extension CustomisedFiltersViewController: UICollectionViewDataSource {
             filterCell.configure(title: datasource[indexPath.row])
         }
         return cell
+    }
+}
+
+extension CustomisedFiltersViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Selected")
     }
 }
 

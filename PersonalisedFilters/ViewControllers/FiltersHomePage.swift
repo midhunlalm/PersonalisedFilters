@@ -8,8 +8,8 @@
 import UIKit
 
 enum FilterType: String {
-    case SelfCustomisedFilter
-    case AutoCustomisedFilter
+    case selfCustomisedFilter
+    case autoCustomisedFilter
 }
 
 class FiltersHomePage: UIViewController {
@@ -62,12 +62,12 @@ extension FiltersHomePage {
     }
     
     @IBAction func openSelfCustomizedFilters(_ sender: Any) {
-        currentFilterSelected = .SelfCustomisedFilter
+        currentFilterSelected = .selfCustomisedFilter
         pushFiltersVC()
     }
     
     @IBAction func openAutoCustomizedFilters(_ sender: Any) {
-        currentFilterSelected = .AutoCustomisedFilter
+        currentFilterSelected = .autoCustomisedFilter
         pushFiltersVC()
     }
 }

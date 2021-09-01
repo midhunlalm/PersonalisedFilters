@@ -66,22 +66,24 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FilterCell" id="iGe-Uw-Y2Q" customClass="FilterCell" customModule="PersonalisedFilters" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                <rect key="frame" x="0.0" y="0.0" width="55.5" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8xu-L6-n0p">
-                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="55.5" height="37"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fq7-zE-KOa">
-                                            <rect key="frame" x="43" y="53.5" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fq7-zE-KOa">
+                                            <rect key="frame" x="10" y="10" width="35.5" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="fq7-zE-KOa" firstAttribute="centerY" secondItem="8xu-L6-n0p" secondAttribute="centerY" id="gBD-dr-Kn3"/>
-                                        <constraint firstItem="fq7-zE-KOa" firstAttribute="centerX" secondItem="8xu-L6-n0p" secondAttribute="centerX" id="vr5-GB-Xhw"/>
+                                        <constraint firstItem="fq7-zE-KOa" firstAttribute="leading" secondItem="8xu-L6-n0p" secondAttribute="leading" constant="10" id="12q-NR-jSb"/>
+                                        <constraint firstItem="fq7-zE-KOa" firstAttribute="top" secondItem="8xu-L6-n0p" secondAttribute="top" constant="10" id="XQs-HD-jSF"/>
+                                        <constraint firstAttribute="trailing" secondItem="fq7-zE-KOa" secondAttribute="trailing" constant="10" id="Yob-r9-RNl"/>
+                                        <constraint firstAttribute="bottom" secondItem="fq7-zE-KOa" secondAttribute="bottom" constant="10" id="f8n-X3-Q54"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <connections>
