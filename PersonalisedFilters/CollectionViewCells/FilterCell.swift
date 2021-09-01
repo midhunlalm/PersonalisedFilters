@@ -8,16 +8,14 @@
 import UIKit
 
 class FilterCell: UICollectionViewCell {
-    
-    let label = UILabel()
+    @IBOutlet weak var titleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        backgroundColor = .lightGray
     }
     
-    func setupCellData(filter: String) {
-        label.text = filter
-        self.contentView.addSubview(label)
+    func configure(title: String) {
+        titleLabel.text = title
     }
-    
 }
