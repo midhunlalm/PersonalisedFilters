@@ -91,7 +91,7 @@ extension CustomisedFiltersViewController {
         for each in filtersData {
             dict[each.id] = each.count
         }
-        Utilities.setDataInUserDefaults(dict, for: currentFilterType?.rawValue ?? "")
+        Utilities.setDataInUserDefaults(dict, for: FilterType.autoCustomisedFilter.rawValue)
     }
     
     func updateDataForAutoCustomisedFilters(for item: String) {

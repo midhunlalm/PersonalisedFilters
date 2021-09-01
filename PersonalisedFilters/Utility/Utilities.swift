@@ -43,14 +43,19 @@ class Utilities {
     static func sortFilters(_ data: [Filter], filterType: FilterType) -> [Filter] {
         switch filterType {
         case .autoCustomisedFilter:
-            let sortedData = data.sorted(by: {
-                $0.count > $1.count
-            })
-            return sortedData
+            if !Utilities.shouldResetFiltersCount(filters: data) {
+                let sortedData = data.sorted(by: { $0.count > $1.count })
+                return sortedData
+            } else {
+                var updatedData = [Filter]()
+                for each in data {
+                    let filter = Filter(id: each.id, name: each.name, count: 0)
+                    updatedData.append(filter)
+                }
+                return updatedData
+            }
         case .selfCustomisedFilter:
-            let sortedData = data.sorted(by: {
-                $0.count < $1.count
-            })
+            let sortedData = data.sorted(by: { $0.count < $1.count })
             return sortedData
         }
     }
@@ -77,5 +82,15 @@ class Utilities {
         }
         
         return model
+    }
+    
+    static func shouldResetFiltersCount(filters: [Filter]) -> Bool {
+        //reset filters count if all of them reach max value.
+        for each in filters {
+            if each.count != CustomisedFiltersViewController.maxSelectionCount {
+                return false
+            }
+        }
+        return true
     }
 }
