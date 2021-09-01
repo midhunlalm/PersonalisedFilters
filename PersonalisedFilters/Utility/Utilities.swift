@@ -7,6 +7,29 @@
 
 import Foundation
 
+enum FilterType: String {
+    case selfCustomisedFilter
+    case autoCustomisedFilter
+    
+    var screenTitle: String {
+        switch self {
+        case .selfCustomisedFilter:
+            return "User Customisable Filter"
+        case .autoCustomisedFilter:
+            return "Auto Customised Filter"
+        }
+    }
+    
+    var userInfoText: String {
+        switch self {
+        case .selfCustomisedFilter:
+            return "Rearrange your filter option and click on save"
+        case .autoCustomisedFilter:
+            return "Customised automatically based on the frequency of usage"
+        }
+    }
+}
+
 class Utilities {
     static func getDataFromUserDefaults(for key: String) -> [String: Int]? {
         return UserDefaults.standard.object(forKey: key) as? [String: Int]
@@ -30,5 +53,29 @@ class Utilities {
             })
             return sortedData
         }
+    }
+    
+    static func fetchSavedFilterData(forType filterType: FilterType) -> [Filter]? {
+        guard let path = Bundle.main.path(forResource: "input", ofType: "json"),
+              let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe),
+              var model = try? JSONDecoder().decode([Filter].self, from: data) else { return nil }
+        
+        if let sortedFilters = getDataFromUserDefaults(for: filterType.rawValue) {
+            var newModel = [Filter]()
+              for (key, value) in sortedFilters {
+                for (index, var each) in model.enumerated() {
+                    if each.id == key { //check for matching FilterIds
+                        each.count = value //update the count
+                        newModel.append(each)
+                        model.remove(at: index) //append to the actual sorted/updated dataModel.
+                        break
+                    }
+                }
+            }
+            newModel.append(contentsOf: model)
+            return sortFilters(newModel, filterType: filterType)
+        }
+        
+        return model
     }
 }

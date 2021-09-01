@@ -14,10 +14,11 @@
 		43C5560426DFAAC100F98971 /* PersonalisedFilters.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 43C5560226DFAAC100F98971 /* PersonalisedFilters.xcdatamodeld */; };
 		43C5560626DFAAC400F98971 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43C5560526DFAAC400F98971 /* Assets.xcassets */; };
 		43C5560926DFAAC400F98971 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43C5560726DFAAC400F98971 /* LaunchScreen.storyboard */; };
-		43C5577726DFBBC200F98971 /* FiltersHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C5577626DFBBC200F98971 /* FiltersHomePage.swift */; };
+		43C5577726DFBBC200F98971 /* FiltersHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C5577626DFBBC200F98971 /* FiltersHomeViewController.swift */; };
 		43C5578626DFCB1500F98971 /* input.json in Resources */ = {isa = PBXBuildFile; fileRef = 43C5578526DFCB1500F98971 /* input.json */; };
 		DA9A9A9E26DFD19B005CFAE2 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9A9A9D26DFD19B005CFAE2 /* FilterCell.swift */; };
 		DA9A9AA626DFF988005CFAE2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9A9AA526DFF988005CFAE2 /* Utilities.swift */; };
+		DA9A9AAE26E00EAA005CFAE2 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9A9AAD26E00EAA005CFAE2 /* Filter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,10 +31,11 @@
 		43C5560526DFAAC400F98971 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43C5560826DFAAC400F98971 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43C5560A26DFAAC400F98971 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		43C5577626DFBBC200F98971 /* FiltersHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersHomePage.swift; sourceTree = "<group>"; };
+		43C5577626DFBBC200F98971 /* FiltersHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersHomeViewController.swift; sourceTree = "<group>"; };
 		43C5578526DFCB1500F98971 /* input.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = input.json; sourceTree = "<group>"; };
 		DA9A9A9D26DFD19B005CFAE2 /* FilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		DA9A9AA526DFF988005CFAE2 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		DA9A9AAD26E00EAA005CFAE2 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,16 +68,11 @@
 		43C555F826DFAAC100F98971 /* PersonalisedFilters */ = {
 			isa = PBXGroup;
 			children = (
+				DA9A9AAC26E00E9E005CFAE2 /* Models */,
 				DA9A9AA426DFF966005CFAE2 /* Utility */,
-				43C5578426DFCAEC00F98971 /* Input */,
+				43C5578426DFCAEC00F98971 /* SupportFiles */,
 				43C5577E26DFC3AD00F98971 /* ViewControllers */,
 				43C5561126DFAB9300F98971 /* CollectionViewCells */,
-				43C555F926DFAAC100F98971 /* AppDelegate.swift */,
-				43C555FB26DFAAC100F98971 /* SceneDelegate.swift */,
-				43C555FF26DFAAC100F98971 /* Main.storyboard */,
-				43C5560526DFAAC400F98971 /* Assets.xcassets */,
-				43C5560726DFAAC400F98971 /* LaunchScreen.storyboard */,
-				43C5560A26DFAAC400F98971 /* Info.plist */,
 				43C5560226DFAAC100F98971 /* PersonalisedFilters.xcdatamodeld */,
 			);
 			path = PersonalisedFilters;
@@ -92,18 +89,24 @@
 		43C5577E26DFC3AD00F98971 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				43C5577626DFBBC200F98971 /* FiltersHomePage.swift */,
+				43C5577626DFBBC200F98971 /* FiltersHomeViewController.swift */,
 				43C555FD26DFAAC100F98971 /* CustomisedFiltersViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		43C5578426DFCAEC00F98971 /* Input */ = {
+		43C5578426DFCAEC00F98971 /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
+				43C5560A26DFAAC400F98971 /* Info.plist */,
+				43C555FF26DFAAC100F98971 /* Main.storyboard */,
+				43C5560526DFAAC400F98971 /* Assets.xcassets */,
+				43C5560726DFAAC400F98971 /* LaunchScreen.storyboard */,
+				43C555F926DFAAC100F98971 /* AppDelegate.swift */,
+				43C555FB26DFAAC100F98971 /* SceneDelegate.swift */,
 				43C5578526DFCB1500F98971 /* input.json */,
 			);
-			path = Input;
+			path = SupportFiles;
 			sourceTree = "<group>";
 		};
 		DA9A9AA426DFF966005CFAE2 /* Utility */ = {
@@ -112,6 +115,14 @@
 				DA9A9AA526DFF988005CFAE2 /* Utilities.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		DA9A9AAC26E00E9E005CFAE2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DA9A9AAD26E00EAA005CFAE2 /* Filter.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,8 +201,9 @@
 				DA9A9AA626DFF988005CFAE2 /* Utilities.swift in Sources */,
 				43C555FE26DFAAC100F98971 /* CustomisedFiltersViewController.swift in Sources */,
 				43C555FA26DFAAC100F98971 /* AppDelegate.swift in Sources */,
+				DA9A9AAE26E00EAA005CFAE2 /* Filter.swift in Sources */,
 				43C555FC26DFAAC100F98971 /* SceneDelegate.swift in Sources */,
-				43C5577726DFBBC200F98971 /* FiltersHomePage.swift in Sources */,
+				43C5577726DFBBC200F98971 /* FiltersHomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,7 +351,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = PersonalisedFilters/Info.plist;
+				INFOPLIST_FILE = PersonalisedFilters/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -357,7 +369,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = PersonalisedFilters/Info.plist;
+				INFOPLIST_FILE = PersonalisedFilters/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

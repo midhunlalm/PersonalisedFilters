@@ -24,12 +24,15 @@ class CustomisedFiltersViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        saveAutoCustomisedFilterData()
+        if currentFilterType == .autoCustomisedFilter {
+            saveAutoCustomisedFilterData()
+        }
         super.viewWillDisappear(animated)
     }
     
     @IBAction func didTapSaveYourChanges(_ sender: Any) {
         saveSelfCustomisedFilterData()
+        navigationController?.popViewController(animated: true)
     }
 }
 
@@ -72,11 +75,6 @@ extension CustomisedFiltersViewController {
         coordinator.drop(item.dragItem, toItemAt: destinationIndexPath)
     }
     
-    func saveUserFilerCustomisation() {
-        (currentFilterType == .selfCustomisedFilter) ? saveSelfCustomisedFilterData()
-            : saveAutoCustomisedFilterData()
-    }
-
     func saveSelfCustomisedFilterData() {
         var filterDictToSave = [String: Int]()
         datasource.enumerated().forEach { (index, item) in
