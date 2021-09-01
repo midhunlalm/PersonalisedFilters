@@ -10,6 +10,15 @@ import UIKit
 enum FilterType: String {
     case selfCustomisedFilter
     case autoCustomisedFilter
+    
+    var screenTitle: String {
+        switch self {
+        case .selfCustomisedFilter:
+            return "User Customisable Filter"
+        case .autoCustomisedFilter:
+            return "Auto Customisable Filter"
+        }
+    }
 }
 
 class FiltersHomePage: UIViewController {

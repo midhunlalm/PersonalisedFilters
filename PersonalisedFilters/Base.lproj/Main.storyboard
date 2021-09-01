@@ -54,47 +54,62 @@
         <scene sceneID="dFk-pV-n7E">
             <objects>
                 <viewController storyboardIdentifier="CustomisedFiltersViewController" id="KiB-e7-e9w" customClass="CustomisedFiltersViewController" customModule="PersonalisedFilters" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="2UG-m5-Jpe">
+                    <view key="view" contentMode="scaleToFill" id="xkd-7z-BkC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FFZ-4U-Tsv">
+                                <rect key="frame" x="10" y="54" width="394" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="J6x-Xi-f4v"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IbX-ea-R9b">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FilterCell" id="WCU-oS-CQT" customClass="FilterCell" customModule="PersonalisedFilters" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="55.5" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OTc-ef-PY6">
+                                            <rect key="frame" x="0.0" y="0.0" width="55.5" height="37"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LP2-ty-ym0">
+                                                    <rect key="frame" x="10" y="10" width="35.5" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="LP2-ty-ym0" secondAttribute="trailing" constant="10" id="2FF-BT-aqy"/>
+                                                <constraint firstItem="LP2-ty-ym0" firstAttribute="top" secondItem="OTc-ef-PY6" secondAttribute="top" constant="10" id="5t3-vI-StW"/>
+                                                <constraint firstItem="LP2-ty-ym0" firstAttribute="leading" secondItem="OTc-ef-PY6" secondAttribute="leading" constant="10" id="Fku-bs-dQ9"/>
+                                                <constraint firstAttribute="bottom" secondItem="LP2-ty-ym0" secondAttribute="bottom" constant="10" id="SOV-tW-eNT"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="LP2-ty-ym0" id="XEL-Ud-DMy"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bXq-ml-8c1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jfs-EI-xzR">
-                            <size key="itemSize" width="128" height="128"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FilterCell" id="iGe-Uw-Y2Q" customClass="FilterCell" customModule="PersonalisedFilters" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="55.5" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8xu-L6-n0p">
-                                    <rect key="frame" x="0.0" y="0.0" width="55.5" height="37"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fq7-zE-KOa">
-                                            <rect key="frame" x="10" y="10" width="35.5" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="fq7-zE-KOa" firstAttribute="leading" secondItem="8xu-L6-n0p" secondAttribute="leading" constant="10" id="12q-NR-jSb"/>
-                                        <constraint firstItem="fq7-zE-KOa" firstAttribute="top" secondItem="8xu-L6-n0p" secondAttribute="top" constant="10" id="XQs-HD-jSF"/>
-                                        <constraint firstAttribute="trailing" secondItem="fq7-zE-KOa" secondAttribute="trailing" constant="10" id="Yob-r9-RNl"/>
-                                        <constraint firstAttribute="bottom" secondItem="fq7-zE-KOa" secondAttribute="bottom" constant="10" id="f8n-X3-Q54"/>
-                                    </constraints>
-                                </collectionViewCellContentView>
-                                <connections>
-                                    <outlet property="titleLabel" destination="fq7-zE-KOa" id="Lin-QN-pmL"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                    </collectionView>
+                        <constraints>
+                            <constraint firstItem="FFZ-4U-Tsv" firstAttribute="leading" secondItem="bXq-ml-8c1" secondAttribute="leading" constant="10" id="KLe-vh-Q7Q"/>
+                            <constraint firstItem="FFZ-4U-Tsv" firstAttribute="top" secondItem="bXq-ml-8c1" secondAttribute="top" constant="10" id="OQk-fk-6jD"/>
+                            <constraint firstItem="bXq-ml-8c1" firstAttribute="trailing" secondItem="FFZ-4U-Tsv" secondAttribute="trailing" constant="10" id="otO-Re-1gy"/>
+                        </constraints>
+                    </view>
                     <navigationItem key="navigationItem" id="4qE-KV-eW0"/>
                     <connections>
-                        <outlet property="collectionView" destination="2UG-m5-Jpe" id="udg-nX-J1L"/>
+                        <outlet property="collectionView" destination="FFZ-4U-Tsv" id="u4P-Uw-ifw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2n-Pi-NPs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

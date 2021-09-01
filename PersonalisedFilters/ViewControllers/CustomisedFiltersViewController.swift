@@ -11,11 +11,7 @@ class CustomisedFiltersViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
     
     private var datasource = [String]()
-    var filtersData: [[String: String]]? {
-        didSet {
-            updateDatasource()
-        }
-    }
+    var filtersData: [[String: String]]?
     var currentFilterType: FilterType?
     
     override func viewDidLoad() {
@@ -26,6 +22,7 @@ class CustomisedFiltersViewController: UIViewController {
 
 extension CustomisedFiltersViewController {
     func setupInterface() {
+        title = currentFilterType?.screenTitle
         collectionView.dataSource = self
         collectionView.delegate = self
         
@@ -34,6 +31,7 @@ extension CustomisedFiltersViewController {
             collectionView.dropDelegate = self
             collectionView.dragInteractionEnabled = true
         }
+        updateDatasource()
     }
     
     func updateDatasource() {
