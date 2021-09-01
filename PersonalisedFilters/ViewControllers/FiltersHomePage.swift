@@ -42,7 +42,7 @@ extension FiltersHomePage {
             print(error.localizedDescription)
         }
         if var model = model, let currentFilterSelected = self.currentFilterSelected,
-              let sortedFilters = UserDefaults.standard.object(forKey: currentFilterSelected.rawValue) as? [String: String] {
+           let sortedFilters = Utilities.getDataFromUserDefaults(for: currentFilterSelected.rawValue) {
             var newModel = [[String: String]]()
               for (key, value) in sortedFilters {
                 for (index, var each) in model.enumerated() {
