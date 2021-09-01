@@ -13,8 +13,10 @@ class CustomisedFiltersViewController: UIViewController {
     @IBOutlet weak var saveYourChangesButton: UIButton!
     
     private var datasource = [String]()
-    var filtersData: [[String: String]]?
+    var filtersData: [Filter]?
     var currentFilterType: FilterType?
+    
+    static let maxSelectionCount = 25
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,9 +54,7 @@ extension CustomisedFiltersViewController {
     func updateDatasource() {
         datasource.removeAll()
         filtersData?.forEach({ (item) in
-            if let name = item["name"] {
-                datasource.append(name)
-            }
+            datasource.append(item.name)
         })
     }
     
@@ -72,18 +72,36 @@ extension CustomisedFiltersViewController {
         coordinator.drop(item.dragItem, toItemAt: destinationIndexPath)
     }
     
+    func saveUserFilerCustomisation() {
+        (currentFilterType == .selfCustomisedFilter) ? saveSelfCustomisedFilterData()
+            : saveAutoCustomisedFilterData()
+    }
+
     func saveSelfCustomisedFilterData() {
-        var filterDictToSave = [String: String]()
+        var filterDictToSave = [String: Int]()
         datasource.enumerated().forEach { (index, item) in
-            if let filterItem = filtersData?.first(where: { $0["name"] == item }),
-               let itemId = filterItem["id"] {
-                filterDictToSave[itemId] = "\(index+1)"
+            if let filterItem = filtersData?.first(where: { $0.name == item }) {
+                filterDictToSave[filterItem.id] = (index+1)
             }
         }
         Utilities.setDataInUserDefaults(filterDictToSave, for: FilterType.selfCustomisedFilter.rawValue)
     }
     
     func saveAutoCustomisedFilterData() {
+        guard let filtersData = self.filtersData else { return }
+        var dict = [String: Int]()
+        for each in filtersData {
+            dict[each.id] = each.count
+        }
+        Utilities.setDataInUserDefaults(dict, for: currentFilterType?.rawValue ?? "")
+    }
+    
+    func updateDataForAutoCustomisedFilters(for item: String) {
+        for (index, each) in self.filtersData!.enumerated() {
+            if each.name == item && each.count < CustomisedFiltersViewController.maxSelectionCount {
+                self.filtersData?[index].count += 1
+            }
+        }
     }
 }
 
@@ -105,6 +123,9 @@ extension CustomisedFiltersViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = datasource[indexPath.row]
         infoLabel.text = "You have selected \(item)"
+        if currentFilterType == .autoCustomisedFilter {
+            updateDataForAutoCustomisedFilters(for: item)
+        }
     }
 }
 
