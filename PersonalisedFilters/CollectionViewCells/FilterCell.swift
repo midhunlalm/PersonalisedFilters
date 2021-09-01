@@ -12,7 +12,8 @@ class FilterCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundColor = .lightGray
+        layer.borderWidth = 1.0
+        layer.borderColor = UIColor.gray.cgColor
     }
     
     func configure(title: String) {

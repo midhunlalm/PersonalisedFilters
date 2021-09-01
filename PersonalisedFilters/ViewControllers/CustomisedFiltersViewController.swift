@@ -24,6 +24,7 @@ extension CustomisedFiltersViewController {
         collectionView.delegate = self
         collectionView.dragDelegate = self
         collectionView.dropDelegate = self
+        collectionView.dragInteractionEnabled = true
     }
     
     func reorderItems(coordinator: UICollectionViewDropCoordinator,
@@ -35,7 +36,7 @@ extension CustomisedFiltersViewController {
             self.datasource.remove(at: sourceIndexPath.item)
             self.datasource.insert((item.dragItem.localObject as? String) ?? "", at: destinationIndexPath.item)
             self.collectionView.deleteItems(at: [sourceIndexPath])
-            self.collectionView.deleteItems(at: [destinationIndexPath])
+            self.collectionView.insertItems(at: [destinationIndexPath])
         }, completion: nil)
         coordinator.drop(item.dragItem, toItemAt: destinationIndexPath)
     }
