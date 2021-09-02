@@ -15,8 +15,10 @@ class CustomisedFiltersViewController: UIViewController {
     private var datasource = [String]()
     var filtersData: [Filter]?
     var currentFilterType: FilterType?
-    
     static let maxSelectionCount = 25
+    var isSelfCustomisedFilter: Bool {
+        return currentFilterType == .selfCustomisedFilter
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +45,7 @@ extension CustomisedFiltersViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        if currentFilterType == .selfCustomisedFilter {
+        if isSelfCustomisedFilter {
             collectionView.dragDelegate = self
             collectionView.dropDelegate = self
             collectionView.dragInteractionEnabled = true
@@ -119,6 +121,7 @@ extension CustomisedFiltersViewController: UICollectionViewDataSource {
 
 extension CustomisedFiltersViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if isSelfCustomisedFilter { return }
         let item = datasource[indexPath.row]
         infoLabel.text = "You have selected \(item)"
         if currentFilterType == .autoCustomisedFilter {
