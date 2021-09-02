@@ -1,1 +1,26 @@
-Personalised filters
+Project: Personalised filters
+
+
+Brief:
+The main idea of this project demo was to enable users to personalise the filters that they use.
+We have curated a couple of ways to achieve this.
+
+
+1. Self Customisation
+
+User can simply drag and drop the favourite filters to their accessible positions and we will show them in the updated order during the next visit onwards.
+This could be very powerful feature as the control is completely with the user and he/she can customise on their own.
+
+2. Auto Customisation
+
+We let the users to use the filters they want and we track the usage of each filters and reorder them based on the frequency of usage.
+
+For eg: If user applies the 1Day delivery filter 3 times and In-store filter once and TopRated filter twice, the order that will be shown to the user during the next visit of the page will be
+
+1. 1Day Delivery
+
+2. topRated
+
+3. In-store
+
+
